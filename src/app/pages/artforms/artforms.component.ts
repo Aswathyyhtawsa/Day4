@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {data} from '../../../assets/data'
+import { HeroService } from 'src/app/hero.service';
 import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
@@ -8,12 +8,13 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./artforms.component.css']
 })
 export class ArtformsComponent {
-artforms=data
-ngOninit():void{
-  this.artforms=data
-}
-constructor(private router:Router)
-{}
+
+  constructor(private router:Router,private hero:HeroService){}
+  artforms=this.hero.giveData
+
+
+
+  
 gotohere(id:any)
 {
   localStorage.setItem('id',id);
